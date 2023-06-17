@@ -1,87 +1,89 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-local Window = Rayfield:CreateWindow({
-   Name = "Skye Client | v1.03",
-   LoadingTitle = "loading...",
-   LoadingSubtitle = "Enjoy!",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = "skye-v1-03",
-      FileName = "skye"
-   },
-   Discord = {
-      Enabled = true,
-      Invite = "jVDRB3HSaV",
-      RememberJoins = true 
-   },
-   KeySystem = true, 
-   KeySettings = {
-      Title = "Skye Client",
-      Subtitle = "Key System",
-      Note = "Check: #key in our discord server to get the key.",
-      FileName = "skye-key", 
-      SaveKey = false, 
-      GrabKeyFromSite = false,
-      Key = {"skye-69420"}
-   }
-})
-Rayfield:Notify({
-   Title = "Skye Client",
-   Content = "Skye has loaded successfully, Enjoy!",
-   Duration = 6.5,
-   Image = 4483362458,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Okay!",
-         Callback = function()
-         print("ey")
-      end
-   },
-},
-})
-local Tab = Window:CreateTab("Skye Client | v1.03 ", 4483362458)
-local Section = Tab:CreateSection("Skye - Main")
---Rayfield:Destroy()
-local Button = Tab:CreateButton({
-   Name = "Game Fixer",
-   Callback = function()
-   wait(2)
-   Rayfield:Notify({
-   Title = "Skye Client",
-   Content = "All lines checked and fixed!",
-   Duration = 2.5,
-   Image = 4483362458,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Okay!",
-         Callback = function()
-         print("ey")
-      end
-   },
-},
-})
-   end,
-})
-local Slider = Tab:CreateSlider({
-   Name = "Walk Speed",
-   Range = {0, 150},
-   Increment = 10,
-   Suffix = "s",
-   CurrentValue = 10,
-   Flag = "walkspeed",
-   Callback = function(Value)
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+local stop = Notification.new("info", "Skye Client", "Waiting for Skye Client to load")
+wait(0.5)
+local stop2 = Notification.new("info", "Skye Client", "Thank you for using Skye!")
+wait(2)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Skye Client | v1.03 | Public","Ocean")
+local Tab = Window:NewTab("Skye | Blatant")
+local Section = Tab:NewSection("Blatant")
+Section:NewLabel("Skye Client | Blatant")
+Section:NewLabel("---------------------------------")
+
+--blatant
+Section:NewSlider("Speed", "Go faster (doesnt work for games with AC)", 150, 0, function(s)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
-        end)
-   end,
-})
-local Slider = Tab:CreateSlider({
-   Name = "Jump Power",
-   Range = {0, 150},
-   Increment = 10,
-   Suffix = "j",
-   CurrentValue = 10,
-   Flag = "jumppower",
-   Callback = function(Value)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
-        end)
-   end,
-})
+end)
+Section:NewButton("Reset Speed", "Resets speed to 16 (normal speed)", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    warn("Reset successfully!")
+end)
+Section:NewSlider("Gravity", "Jump higher", 150, 0, function(g)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = g
+end)
+Section:NewButton("Reset Jump Power", "Resets jump power to 50 (normal jump power)", function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+    warn("Reset successfully!")
+end)
+
+local Section = Tab:NewSection("Main")
+Section:NewLabel("Skye Client | Main")
+Section:NewLabel("---------------------------------")
+
+Section:NewButton("ESP + Chams", "ESP", function()
+    local Players = game:GetService("Players"):GetChildren()
+local RunService = game:GetService("RunService")
+local highlight = Instance.new("Highlight")
+highlight.Name = "Highlight"
+
+for i, v in pairs(Players) do
+    repeat wait() until v.Character
+    if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+        local highlightClone = highlight:Clone()
+        highlightClone.Adornee = v.Character
+        highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+        highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        highlightClone.Name = "Highlight"
+    end
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    repeat wait() until player.Character
+    if not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+        local highlightClone = highlight:Clone()
+        highlightClone.Adornee = player.Character
+        highlightClone.Parent = player.Character:FindFirstChild("HumanoidRootPart")
+        highlightClone.Name = "Highlight"
+    end
+end)
+
+game.Players.PlayerRemoving:Connect(function(playerRemoved)
+    playerRemoved.Character:FindFirstChild("HumanoidRootPart").Highlight:Destroy()
+end)
+
+RunService.Heartbeat:Connect(function()
+    for i, v in pairs(Players) do
+        repeat wait() until v.Character
+        if not v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") then
+            local highlightClone = highlight:Clone()
+            highlightClone.Adornee = v.Character
+            highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+            highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlightClone.Name = "Highlight"
+            task.wait()
+        end
+end
+end)
+end)
+Section:NewButton("Custom Atmosphere", "Custom atmosphere (skybox)", function()
+local Lighting = game:GetService("Lighting")
+local Sky = Instance.new("SkyeSkyXD")
+Sky.Parent = Lighting
+Sky.SunAngularSize = 10
+Sky.SkyboxBk = "rbxassetid://1380863354"
+Sky.SkyboxFt = "rbxassetid://1380863354"
+Sky.SkyboxLf = "rbxassetid://1380863354"
+Sky.SkyboxRt = "rbxassetid://1380863354"
+Sky.SkyboxUp = "rbxassetid://1380863354"
+Sky.SkyboxDn = "rbxassetid://1380863354"
+end)
