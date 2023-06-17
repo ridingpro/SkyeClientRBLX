@@ -1,0 +1,87 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+   Name = "Skye Client | v1.03",
+   LoadingTitle = "loading...",
+   LoadingSubtitle = "Enjoy!",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "skye-v1-03",
+      FileName = "skye"
+   },
+   Discord = {
+      Enabled = true,
+      Invite = "jVDRB3HSaV",
+      RememberJoins = true 
+   },
+   KeySystem = true, 
+   KeySettings = {
+      Title = "Skye Client",
+      Subtitle = "Key System",
+      Note = "Check: #key in our discord server to get the key.",
+      FileName = "skye-key", 
+      SaveKey = false, 
+      GrabKeyFromSite = false,
+      Key = {"skye-69420"}
+   }
+})
+Rayfield:Notify({
+   Title = "Skye Client",
+   Content = "Skye has loaded successfully, Enjoy!",
+   Duration = 6.5,
+   Image = 4483362458,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("ey")
+      end
+   },
+},
+})
+local Tab = Window:CreateTab("Skye Client | v1.03 ", 4483362458)
+local Section = Tab:CreateSection("Skye - Main")
+--Rayfield:Destroy()
+local Button = Tab:CreateButton({
+   Name = "Game Fixer",
+   Callback = function()
+   wait(2)
+   Rayfield:Notify({
+   Title = "Skye Client",
+   Content = "All lines checked and fixed!",
+   Duration = 2.5,
+   Image = 4483362458,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("ey")
+      end
+   },
+},
+})
+   end,
+})
+local Slider = Tab:CreateSlider({
+   Name = "Walk Speed",
+   Range = {0, 150},
+   Increment = 10,
+   Suffix = "s",
+   CurrentValue = 10,
+   Flag = "walkspeed",
+   Callback = function(Value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+        end)
+   end,
+})
+local Slider = Tab:CreateSlider({
+   Name = "Jump Power",
+   Range = {0, 150},
+   Increment = 10,
+   Suffix = "j",
+   CurrentValue = 10,
+   Flag = "jumppower",
+   Callback = function(Value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
+        end)
+   end,
+})
