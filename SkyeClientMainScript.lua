@@ -6,6 +6,7 @@ wait(2)
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Skye Client", "Ocean")
+local Tab = Window:NewTab("Skye")
 local SectionCombat = Tab:NewSection("Combat")
 local SectionMovement = Tab:NewSection("Movement")
 local SectionPlr = Tab:NewSection("Player")
