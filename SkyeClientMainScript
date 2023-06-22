@@ -4,11 +4,6 @@ wait(0.5)
 local stop2 = Notification.new("info", "Skye Client", "Thank you for using Skye!")
 wait(2)
 
-local Client = require(game:GetService"ReplicatedStorage".TS.remotes).default.Client
-local UIS = game:GetService"UserInputService"
-local KnitClient = debug.getupvalue(require(game.Players.LocalPlayer.PlayerScripts.TS.knit).setup, 6)
-local sprinttable = KnitClient.Controllers.SprintController
-
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Skye Client", "Ocean")
 local SectionCombat = Tab:NewSection("Combat")
